@@ -1,0 +1,27 @@
+PlayCtrl = PlayCtrl or BaseClass()
+
+function PlayCtrl:Ctor()
+	self:Init()
+end
+
+function PlayCtrl:Init()
+	local entity_require_list = require("game/play/entity_require_list")
+	for _, v in ipairs(entity_require_list) do
+		require(v)
+	end
+
+	local comp_require_list = require("game/play/comp_require_list")
+	for _, v in ipairs(comp_require_list) do
+		require(v)
+	end
+	-- local count = 0
+	-- Utils:AddTimer(0.001, function()
+	-- 	local actor = Actor.New()
+	-- 	actor:LoadComp()
+	-- 	local go_comp = actor:GetComp(GoComp)
+	-- 	count = count + 1
+	-- end, true)
+end
+
+function PlayCtrl:Dtor()
+end

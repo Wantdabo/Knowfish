@@ -1,0 +1,19 @@
+FixedUpdateComp = FixedUpdateComp or BaseClass(BaseComp)
+
+function FixedUpdateComp:Ctor()
+end
+
+function FixedUpdateComp:Dtor()
+end
+
+function FixedUpdateComp:Update()
+	self:GetEntity():FixedUpdate()
+end
+
+function FixedUpdateComp:Added()
+	UpdateManager:RegisterFixedUpdate(self)
+end
+
+function FixedUpdateComp:Removed()
+	UpdateManager:RemoveFixedUpdate(self)
+end

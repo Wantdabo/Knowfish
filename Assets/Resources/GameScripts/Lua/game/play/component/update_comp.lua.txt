@@ -1,0 +1,19 @@
+UpdateComp = UpdateComp or BaseClass(BaseComp)
+
+function UpdateComp:Ctor()
+end
+
+function UpdateComp:Dtor()
+end
+
+function UpdateComp:Update()
+	self:GetEntity():Update()
+end
+
+function UpdateComp:Added()
+	UpdateManager:RegisterUpdate(self)
+end
+
+function UpdateComp:Removed()
+	UpdateManager:RemoveUpdate(self)
+end

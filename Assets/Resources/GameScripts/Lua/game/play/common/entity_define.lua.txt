@@ -1,0 +1,15 @@
+EntityDefine = {
+	Entity = "Entity",
+	
+	Actor = "Actor",
+	Player = "Player",
+	AIPlayer = "AIPlayer",
+	MainPlayer = "MainPlayer",
+	Monster = "Monster",
+	Boss = "Boss",
+	Npc = "Npc",
+
+	Scene = "Scene",
+	Destruction = "Destruction",
+	Collection = "Collection",
+}

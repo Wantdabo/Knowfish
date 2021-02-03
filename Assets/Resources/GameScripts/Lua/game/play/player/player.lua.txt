@@ -1,0 +1,7 @@
+Player = Player or BaseClass(Actor)
+
+function Player:Ctor()
+end
+
+function Player:Dtor()
+end

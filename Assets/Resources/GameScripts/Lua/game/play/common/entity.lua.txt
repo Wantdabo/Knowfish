@@ -1,0 +1,57 @@
+Entity = Entity or BaseClass()
+
+function Entity:Ctor()
+	self.entity_type = EntityDefine.Entity
+	self.comp_list = {}
+end
+
+function Entity:Dtor()
+	if self.comp_list == nil then return end
+
+	for _, v in pairs(self.comp_list) do
+		if v ~= nil then
+			self:RemoveComp(v.class_type)
+			v:Ruin()
+		end
+	end
+	self.comp_list = nil
+end
+
+function Entity:GetEntityType()
+	return self.entity_type
+end
+
+function Entity:GetComp(comp)
+	return self.comp_list[comp]
+end
+
+function Entity:AddComp(comp)
+	if self.comp_list[comp] then return end
+	self.comp_list[comp] = comp.New()
+	self.comp_list[comp]:SetEntity(self)
+	self.comp_list[comp]:Added()
+end
+
+function Entity:RemoveComp(comp)
+	if self.comp_list[comp] then
+		self.comp_list[comp]:Removed()
+		self.comp_list[comp]:Ruin()
+		self.comp_list[comp] = nil
+	end
+end
+
+function Entity:ContainsComp(comp)
+	return self:GetComp(comp) ~= nil
+end
+
+function Entity:LoadComp()
+end
+
+function Entity:Update()
+end
+
+function Entity:FixedUpdate()
+end
+
+function Entity:LateUpdate()
+end

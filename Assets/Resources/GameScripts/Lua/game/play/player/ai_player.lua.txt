@@ -1,0 +1,7 @@
+AIPlayer = AIPlayer or BaseClass(Player)
+
+function AIPlayer:Ctor()
+end
+
+function AIPlayer:Dtor()
+end

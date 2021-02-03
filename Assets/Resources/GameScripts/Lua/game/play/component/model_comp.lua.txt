@@ -1,0 +1,7 @@
+ModelComp = ModelComp or BaseClass(BaseComp)
+
+function ModelComp:Ctor()
+end
+
+function ModelComp:Dtor()
+end

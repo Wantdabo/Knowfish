@@ -1,0 +1,41 @@
+function BaseClass(super)
+	local obj = {}
+	obj.super = super
+
+	if obj.super == nil then
+		obj.super = {
+			Ctor = function(obj, ...) end,
+			Dtor = function(obj, ...) end,
+		}
+	end
+	obj.super.__index = obj.super
+	obj.class_type = obj
+	obj.New = function(...)
+		local self = {New = function() end}
+		setmetatable(self, {__index = obj})
+
+		DoCtor(self, obj, ...)
+
+		return self
+	end
+	obj.Ruin = function(...)
+		DoDtor(self, obj, ...)
+	end
+	setmetatable(obj, obj.super)
+
+	return obj
+end
+
+function DoCtor(obj, super, ...)
+	if super ~= nil then
+		DoCtor(obj, super.super, ...)
+		super:Ctor(obj, ...)
+	end
+end
+
+function DoDtor(obj, super, ...)
+	if super ~= nil then
+		DoDtor(obj, super.super, ...)
+		super:Dtor(obj, ...)
+	end
+end

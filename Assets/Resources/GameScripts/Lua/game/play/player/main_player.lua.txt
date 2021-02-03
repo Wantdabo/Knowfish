@@ -1,0 +1,7 @@
+MainPlayer = MainPlayer or BaseClass(Player)
+
+function MainPlayer:Ctor()
+end
+
+function MainPlayer:Dtor()
+end

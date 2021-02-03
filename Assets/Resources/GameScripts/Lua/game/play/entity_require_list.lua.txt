@@ -1,0 +1,10 @@
+local require_list = {
+	"game/play/common/entity",
+	"game/play/common/actor",
+
+	"game/play/player/player",
+	"game/play/player/main_player",
+	"game/play/player/ai_player",
+}
+
+return require_list

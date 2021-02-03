@@ -1,0 +1,20 @@
+Actor = Actor or BaseClass(Entity)
+
+function Actor:Ctor()
+	self.entity_type = EntityDefine.Actor
+end
+
+function Actor:Dtor()
+end
+
+function Actor:LoadComp()
+	self.super:LoadComp()
+
+	self:AddComp(GoComp)
+	self:AddComp(ModelComp)
+	self:AddComp(UpdateComp)
+end
+
+function Actor:Update()
+	-- print_error("Actor:Update ===========================")
+end

@@ -1,0 +1,19 @@
+LateUpdateComp = LateUpdateComp or BaseClass(BaseComp)
+
+function LateUpdateComp:Ctor()
+end
+
+function LateUpdateComp:Dtor()
+end
+
+function LateUpdateComp:Update()
+	self:GetEntity():LateUpdate()
+end
+
+function LateUpdateComp:Added()
+	UpdateManager:RegisterLateUpdate(self)
+end
+
+function LateUpdateComp:Removed()
+	UpdateManager:RemoveLateUpdate(self)
+end

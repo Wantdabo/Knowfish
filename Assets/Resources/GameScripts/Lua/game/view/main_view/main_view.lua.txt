@@ -1,0 +1,73 @@
+MainView = MainView or BaseClass(BaseView)
+
+function MainView:Ctor()
+
+end
+
+function MainView:LoadCallBack()
+	self.color_strength = 0.35
+	self.cells = {}
+	self.load_scene_demo_event = EventManager:Add(Event.LOAD_SCENE, function(event) self:LoadScene(event.eventKey) end)
+	for i = 1, 3 do
+		-- 特殊格子才需要继承重写
+		-- self.cells[i] = MainViewCell.New()
+		self.cells[i] = BaseCell.New()
+		self.cells[i]:Bind(self.cell_org, self.cell_grid)
+	end
+end
+
+function MainView:OpenCallBack()
+	self.cur_time = Clock:LocalTime()
+	self.cur_time_timer = Utils:AddTimer(1, function()
+		self.cur_time = self.cur_time + 1
+		self.cur_time_lbl.text = self.cur_time
+	end, true)
+
+	self:Flush()
+end
+
+function MainView:OnFlush()
+	for k, v in ipairs(self.cells) do
+		v.name.text = k
+		v.icon.color = Color(k * self.color_strength, k * self.color_strength, k * self.color_strength, 1)
+	end
+end
+
+function MainView:ReleaseCallBack()
+	if self.load_scene_demo_event ~= nil then
+		EventManager:Remove(self.load_scene_demo_event)
+	end
+	self.load_scene_demo_event = nil
+	self.cells = nil
+end
+
+function MainView:LoadScene(param)
+	SceneManager:LoadScene(param)
+end
+
+function MainView:CloseCallBack()
+	if self.cur_time_timer ~= nil then
+		Utils:RemoveTimer(self.cur_time_timer)
+	end
+	self.cur_time_timer = nil
+	self.cur_time = nil
+end
+
+----------------------------- 特殊格子才需要继承重写 -----------------------------
+-- MainViewCell = MainViewCell or BaseClass(BaseCell)
+
+-- function MainViewCell:Ctor()
+
+-- end
+
+-- function MainViewCell:LoadCallBack()
+
+-- end
+
+-- function MainViewCell:ReleaseCallBack()
+
+-- end
+
+-- function MainViewCell:OnFlush()
+
+-- end

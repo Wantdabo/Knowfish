@@ -1,0 +1,23 @@
+BaseComp = BaseComp or BaseClass()
+
+function BaseComp:Ctor()
+	self.entity = nil
+end
+
+function BaseComp:Dtor()
+	self.entity = nil
+end
+
+function BaseComp:GetEntity()
+	return self.entity
+end
+
+function BaseComp:SetEntity(entity)
+	self.entity = entity
+end
+
+function BaseComp:Added()
+end
+
+function BaseComp:Removed()
+end

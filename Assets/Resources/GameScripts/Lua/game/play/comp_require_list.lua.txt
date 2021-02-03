@@ -1,0 +1,10 @@
+local require_list = {
+	"game/play/component/base_comp",
+	"game/play/component/go_comp",
+	"game/play/component/model_comp",
+	"game/play/component/update_comp",
+	"game/play/component/fixed_update_comp",
+	"game/play/component/late_update_comp",
+}
+
+return require_list

@@ -1,0 +1,64 @@
+UpdateManager = UpdateManager or BaseClass()
+
+function UpdateManager:Ctor()
+	self.update_list = {}
+	self.fixed_update_list = {}
+	self.late_update_list = {}
+end
+
+function UpdateManager:Dtor()
+end
+
+function UpdateManager:RemoveFunc(update_list, comp)
+	local list = {}
+	for _, v in ipairs(update_list) do
+		if comp ~= v then
+			list[#list + 1] = v
+		end
+	end
+
+	return list
+end
+
+function UpdateManager:RegisterUpdate(comp)
+	self.update_list[#self.update_list + 1] = comp
+end
+
+function UpdateManager:RemoveUpdate(comp)
+	self.update_list = self:RemoveFunc(self.update_list, comp)
+end
+
+function UpdateManager:RegisterFixedUpdate(comp)
+	self.fixed_update_list[#self.fixed_update_list + 1] = comp
+end
+
+function UpdateManager:RemoveFixedUpdate(comp)
+	self.fixed_update_list = self:RemoveFunc(self.fixed_update_list, comp)
+end
+
+function UpdateManager:RegisterLateUpdate(comp)
+	self.late_update_list[#self.late_update_list + 1] = comp
+end
+
+function UpdateManager:RemoveLateUpdate(comp)
+	self.late_update_list = self:RemoveFunc(self.late_update_list, comp)
+end
+
+
+function UpdateManager:Update()
+	for _, v in ipairs(self.update_list) do
+		v:Update()
+	end
+end
+
+function UpdateManager:FixedUpdate()
+	for _, v in ipairs(self.fixed_update_list) do
+		v:FixedUpdate()
+	end
+end
+
+function UpdateManager:LateUpdate()
+	for _, v in ipairs(self.late_update_list) do
+		v:LateUpdate()
+	end
+end
