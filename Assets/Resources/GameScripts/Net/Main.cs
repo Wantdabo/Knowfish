@@ -8,6 +8,10 @@ public class Main : MonoBehaviour
     public Transform uiRoot;
     [SerializeField]
     public Transform uiSound;
+    [SerializeField]
+    public Transform sceneRoot;
+    [SerializeField]
+    public Transform sceneSound;
 
     private static Main main;
 

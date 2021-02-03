@@ -1,5 +1,6 @@
 local require_list = {
 	"game/play/common/entity",
+	"game/play/common/scene",
 	"game/play/common/actor",
 
 	"game/play/player/player",

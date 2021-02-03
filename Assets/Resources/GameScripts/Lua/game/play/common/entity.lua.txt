@@ -2,6 +2,9 @@ Entity = Entity or BaseClass()
 
 function Entity:Ctor()
 	self.entity_type = EntityDefine.Entity
+	self.uid = nil
+	self.entity_id = nil
+
 	self.comp_list = {}
 end
 
@@ -19,6 +22,26 @@ end
 
 function Entity:GetEntityType()
 	return self.entity_type
+end
+
+function Entity:SetEntityType(entity_type)
+	self.entity_type = entity_type
+end
+
+function Entity:GetUID()
+	return self.uid
+end
+
+function Entity:SetUID(uid)
+	self.uid = uid
+end
+
+function Entity:GetEntityID()
+	return self.entity_id
+end
+
+function Entity:SetEntityID(entity_id)
+	self.entity_id = entity_id
 end
 
 function Entity:GetComp(comp)

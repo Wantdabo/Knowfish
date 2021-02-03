@@ -20,6 +20,11 @@ function ViewManager:RegisterView(view, view_name)
 	end
 end
 
+-- 外部禁止使用
+function ViewManager:GetView(view_name)
+	return self.view_list[view_name]
+end
+
 function ViewManager:Open(view_name)
 	SoundManager:Play(Sound.OpenView, {unique = true, sound_type = SysEnum.SoundType.UI})
 	if self.view_list[view_name] then

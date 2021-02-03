@@ -1,0 +1,9 @@
+require("game/play/entity_data")
+EntityCtrl = EntityCtrl or BaseClass(BaseCtrl)
+
+function EntityCtrl:Ctor()
+	self:SetData(EntityData.New())
+end
+
+function EntityCtrl:Dtor()
+end

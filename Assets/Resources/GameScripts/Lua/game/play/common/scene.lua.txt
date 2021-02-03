@@ -1,0 +1,17 @@
+Scene = Scene or BaseClass(Entity)
+
+function Scene:Ctor()
+	self.entity_type = EntityDefine.Scene
+	self.node = nil
+end
+
+function Scene:Dtor()
+end
+
+function Scene:GetNode()
+	return self.node
+end
+
+function Scene:SetNode(node)
+	self.node = node
+end

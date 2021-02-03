@@ -14,6 +14,8 @@ _G.Log = CS.Log.Instance
 
 _G.UIRoot = Main.uiRoot
 _G.UISound = Main.uiSound
+_G.SceneRoot = Main.sceneRoot
+_G.SceneSound = Main.sceneSound
 
 local require_list = {
 	"common/event_manager",
@@ -22,8 +24,10 @@ local require_list = {
 	"common/scene_manager",
 	"common/config_manager",
 	"common/update_manager",
+	"common/base_ctrl",
 
 	"game/play/play_ctrl",
+	"game/play/entity_ctrl",
 	"game/view/loading/loading_ctrl",
 	"game/view/main_view/main_view_ctrl",
 	"game/view/role_exp/role_exp_ctrl",

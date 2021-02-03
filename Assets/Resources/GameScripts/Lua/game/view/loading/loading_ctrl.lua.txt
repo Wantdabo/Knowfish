@@ -1,11 +1,11 @@
 require("game/view/loading/loading_view")
 require("game/view/loading/loading_data")
 
-LoadingCtrl = LoadingCtrl or BaseClass()
+LoadingCtrl = LoadingCtrl or BaseClass(BaseCtrl)
 
 function LoadingCtrl:Ctor()
-	self.view = LoadingView.New(View.LoadingView)
-	self.data = LoadingData.New()
+	self:SetView(LoadingView.New(View.LoadingView))
+	self:SetData(LoadingData.New())
 end
 
 function LoadingCtrl:Dtor()

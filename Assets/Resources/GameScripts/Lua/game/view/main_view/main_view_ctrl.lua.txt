@@ -1,11 +1,11 @@
 require("game/view/main_view/main_view")
 require("game/view/main_view/main_view_data")
 
-MainViewCtrl = MainViewCtrl or BaseClass()
+MainViewCtrl = MainViewCtrl or BaseClass(BaseCtrl)
 
 function MainViewCtrl:Ctor()
-	self.view = MainView.New(View.MainView)
-	self.data = MainViewData.New()
+	self:SetView(MainView.New(View.MainView))
+	self:SetData(MainViewData.New())
 end
 
 function MainViewCtrl:Dtor()

@@ -1,0 +1,81 @@
+EntityData = EntityData or BaseClass()
+
+function EntityData:Ctor()
+	self.entity_type_list = {}
+	self.entity_uid_list = {}
+	self.entity_id_list = {}
+end
+
+function EntityData:Dtor()
+end
+
+function EntityData:Add2List(entity)
+	if entity == nil then return end
+
+	local entity_type = entity:GetEntityType()
+	local list = self.entity_type_list[entity_type]
+	if list == nil then
+		self.entity_type_list[entity_type] = {}
+		list = self.entity_type_list[entity_type]
+	end
+	list[#list + 1] = entity
+
+	if entity:GetUID() then
+		self.entity_uid_list[entity:GetUID()] = entity
+	end
+
+	self.entity_id_list[entity:GetEntityID()] = entity
+end
+
+function EntityData:Remove4List(entity)
+	if entity == nil then return end
+
+	local entity_type = entity:GetEntityType()
+	local list = {}
+	for _, v in ipairs(self.entity_type_list[entity_type]) do
+		if entity ~= v then
+			list[#list + 1] = v
+		end
+	end
+	self.entity_type_list[entity_type] = list
+
+	list = {}
+	for _, v in ipairs(self.entity_uid_list) do
+		if entity ~= v then
+			list[#list + 1] = v
+		end
+	end
+	self.entity_uid_list = list
+
+	list = {}
+	for _, v in ipairs(self.entity_id_list) do
+		if entity ~= v then
+			list[#list + 1] = v
+		end
+	end
+	self.entity_id_list = list
+end
+
+function EntityData:GetEntityListByType(entity_type)
+	return self.entity_type_list[entity_type] or {}
+end
+
+function EntityData:GetEntityByUID(uid)
+	return self.entity_uid_list[uid]
+end
+
+function EntityData:GetEntityByEntityID(entity_id)
+	return self.entity_id_list[entity_id]
+end
+
+function EntityData:RemoveEntityByEntityType(entity_type)
+	self.entity_type_list[entity_type] = {}
+end
+
+function EntityData:RemoveEntityByEntityID(entity_id)
+	self:RemoveEntity(self:GetEntityByEntityID(entity_id))
+end
+
+function EntityData:RemoveEntityByUID(uid)
+	self:RemoveEntity(self:GetEntityByUID(entity_id))
+end

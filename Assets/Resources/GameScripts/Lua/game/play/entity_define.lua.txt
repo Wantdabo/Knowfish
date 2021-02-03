@@ -1,6 +1,7 @@
 EntityDefine = {
 	Entity = "Entity",
 	
+	Scene = "Scene",
 	Actor = "Actor",
 	Player = "Player",
 	AIPlayer = "AIPlayer",
@@ -8,8 +9,6 @@ EntityDefine = {
 	Monster = "Monster",
 	Boss = "Boss",
 	Npc = "Npc",
-
-	Scene = "Scene",
 	Destruction = "Destruction",
 	Collection = "Collection",
 }
